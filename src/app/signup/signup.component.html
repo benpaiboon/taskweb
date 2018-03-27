@@ -1,0 +1,55 @@
+<div class="ui center aligned middle aligned grid">
+  <div class="column">
+    <div class="ui error message transition hidden" id="errMsg">
+      <i class="close icon"></i>
+      <div class="header">
+        {{msg}}
+      </div>
+    </div>
+    <h1 class="ui violet center aligned header">
+      Create a Blendio Account
+    </h1>
+    <form class="ui large form" #signupForm="ngForm" (ngSubmit)="createNewAccount(signupForm)">
+      <div class="field">
+        <div class="ui fluid big left icon input">
+          <input type="text" placeholder="Full name" autofocus name="fullName" ngModel #fullName="ngModel" required>
+          <i aria-hidden="true" class="user icon"></i>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui fluid big left icon input">
+          <input type="text" placeholder="E-mail address" name="emailAddr" ngModel #emailAddr="ngModel" required>
+          <i aria-hidden="true" class="mail icon"></i>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui fluid big left icon input">
+          <input type="password" placeholder="Password" name="password" ngModel #password="ngModel" required>
+          <i aria-hidden="true" class="lock icon"></i>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui fluid big left icon input">
+          <input type="password" placeholder="Confirm password" name="repassword" ngModel #repassword="ngModel" required>
+          <i aria-hidden="true" class="lock icon"></i>
+        </div>
+      </div>
+      <button class="ui violet huge fluid button" role="button">Create New Account</button>
+    </form>
+    <h4 class="ui horizontal divider header">OR</h4>
+    <p>
+      <button class="ui facebook small button">
+        <i class="facebook f icon"></i>
+        Login with Facebook
+      </button>
+      <button class="ui google plus small button">
+        <i class="google icon"></i>
+        Login with Google
+      </button>
+    </p>
+    <p>
+      Have an account?
+      <a [routerLink]="['/']"> Sign in to your account here</a>
+    </p>
+  </div>
+</div>

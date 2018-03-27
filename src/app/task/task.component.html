@@ -1,0 +1,178 @@
+<!-- Left Sidebar Menus -->
+<div class="ui sidebar vertical left inverted menu">
+  <a href="/" class="item">
+    <div class="ui mini image">
+      <img src="assets/images/logo.png">
+    </div>
+    <a href="/">
+      <b>Company Name</b>
+    </a>
+  </a>
+  <a href="/" class="item">
+    <i class="home icon"></i> Home
+  </a>
+  <a href="/task" class="item">
+    <i class="calendar icon"></i> Tasks
+  </a>
+  <a href="/user" class="item">
+    <i class="users icon"></i> Users
+  </a>
+</div>
+
+<!-- Nav Bar -->
+<div class="ui basic icon top fixed violet inverted menu">
+  <a id="mainMenus" class="item">
+    <i class="large sidebar icon"></i>
+  </a>
+  <a class="item">
+    Task
+  </a>
+  <div class="right menu">
+    <a class="item" id="addTaskBtn" (click)="showAddModal();">
+      <i class="large add icon"></i>
+    </a>
+    <a class="ui dropdown item" id="searchBtn">
+      <i class="large search icon"></i>
+      <div class="menu">
+        <div class="ui info message">
+          <div class="ui left icon input">
+            <i class="search icon"></i>
+            <input type="text" name="search" placeholder="Search...">
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- Add New Task Model -->
+<div class="ui tiny modal">
+  <i class="close icon"></i>
+  <div class="header">
+    Add New Task
+  </div>
+  <div class="content">
+    <p>{{message}}</p>
+    <div class="ui form">
+      <div class="field">
+        <label>Task Name</label>
+        <input type="text" placeholder="Enter your task name..." [(ngModel)]="taskTitle">
+      </div>
+      <div class="field">
+        <label>Detail</label>
+        <textarea rows="4" placeholder="Enter your task detail here..." [(ngModel)]="taskDesc"></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="ui black deny button">
+      Cancel
+    </div>
+    <div class="ui positive right labeled icon button" (click)="addTask();">
+      Create
+      <i class="checkmark icon"></i>
+    </div>
+  </div>
+</div>
+
+<!-- Fixed Bottom Bar -->
+<div class="ui bottom fixed attached menu">
+  <div class="ui container">
+    <div class="ui pointing secondary menu">
+      <a class="violet item active" data-tab="tabTask">My Tasks</a>
+      <a class="violet item" data-tab="tabOrder">My Orders</a>
+      <a class="violet item" data-tab="tabHistory">History</a>
+    </div>
+  </div>
+</div>
+
+<!-- Main Content -->
+<div class="pusher">
+  <div class="ui container">
+    <div class="ui tab active" data-tab="tabTask">
+      <div class="ui relaxed divided items">
+        <div class="item" *ngFor="let task of tasks; let i=index;">
+          <div class="ui small image">
+            <img src="{{task.taskImg}}">
+          </div>
+          <div class="content">
+            <a class="header">{{task.taskName}}</a>
+            <div class="meta">
+              Created By
+              <a>{{task.owner}}</a> @ {{task.created}}
+            </div>
+            <div class="description">
+              {{task.description}}
+            </div>
+            <div class="extra">
+              <img *ngFor="let con of task.contributor" src="{{con}}" class="ui circular avatar image">
+              <div class="ui right floated">
+                <div class="ui inline dropdown" id="taskStatus{{i}}">
+                  <div class="text">
+                    <a class="ui yellow empty circular label"></a>To do
+                  </div>
+                  <i class="dropdown icon"></i>
+                  <div class="menu">
+                    <div class="item">
+                      <a class="ui yellow empty circular label"></a>To do
+                    </div>
+                    <div class="item">
+                      <a class="ui violet empty circular label"></a>Doing
+                    </div>
+                    <div class="item">
+                      <a class="ui green empty circular label"></a>Done
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ui tab" data-tab="tabOrder">
+      <div class="ui four doubling stackable cards">
+        <div class="card" *ngFor="let order of orders; let i=index;">
+          <div class="content">
+            <div class="header">{{order.projectName}} {{i+1}}</div>
+            <div class="meta">
+              Owner
+              <a>{{order.owner}}</a> @ {{order.created}}
+            </div>
+            <div class="description">
+              <img class="ui medium image" src="{{order.description}}">
+            </div>
+            <div class="ui divider"></div>
+            <div class="extra">
+              <img *ngFor="let con of order.contributor" src="{{con}}" class="ui circular avatar image">
+            </div>
+          </div>
+          <div class="ui bottom attached button">
+            <i class="add icon"></i>
+            Join Project
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ui tab" data-tab="tabHistory">
+      <div class="ui very relaxed divided animated selection list">
+        <div class="item" *ngFor="let hist of history; let i=index;">
+          <i class="large checkmark middle aligned icon"></i>
+          <div class="content">
+            <a class="header">{{hist.projectName}} {{i+1}}</a>
+            <div class="meta">
+              Owner
+              <a>{{hist.owner}}</a> @ {{hist.created}}, Done@ {{hist.done}}
+            </div>
+            <div class="description">
+              {{hist.description}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- End ui container -->
+</div>
+<!-- End pusher -->

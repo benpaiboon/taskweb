@@ -1,0 +1,6 @@
+.ui.center.aligned.middle.aligned.grid{
+  height: 100%;
+}
+.ui.center.aligned.middle.aligned.grid div.column{
+  max-width: 450px;
+}

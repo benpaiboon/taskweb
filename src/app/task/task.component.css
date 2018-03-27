@@ -1,0 +1,23 @@
+/* .ui.container{
+  margin-top: 20px;
+} */
+
+/* #mainMenus{
+  padding-top: 48px;
+} */
+
+/* Logo */
+div.ui.mini.image{
+  margin-right: 10px;
+}
+
+/* Fixed bottom bar */
+.ui.bottom.fixed.attached.menu {
+  top: auto;
+}
+
+/* Content */
+.pusher{
+  padding-top: 80px;
+  padding-bottom: 100px;
+}
